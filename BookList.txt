@@ -1,0 +1,11 @@
+newt,newa,newt,1,1,1,Good,1,new
+e,e,e,e,1,1,Good,2,new
+newt,newa,newt,1,1,1,Good,3,new
+e,e,e,e,1,1,Good,4,new
+newt,newa,newt,1,1,1,Good,5,new
+e,e,e,e,1,1,Good,6,new
+newt,newa,newt,1,1,1,Good,7,new
+e,e,e,e,1,1,Good,8,new
+newt,newa,newt,1,1,1,Good,9,new
+e,e,e,e,1,1,Good,10,new
+newt,newa,newt,1,1,1,Good,11,new
