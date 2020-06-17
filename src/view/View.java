@@ -2,7 +2,6 @@ package view;
 
 import controller.BookControl;
 import controller.UserControl;
-import model.Book;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -14,7 +13,7 @@ public class View {
 
     public static Scanner scanner = new Scanner(System.in);
 
-    public static void LoginView() throws IOException {
+    public void LoginView() throws IOException {
         boolean login = true;
 
         while(login){
@@ -57,7 +56,7 @@ public class View {
         }
     }
 
-    public static void RegisterView() throws IOException {
+    public void RegisterView() throws IOException {
         System.out.println("회원가입 창");
         UserControl uc = new UserControl();
         int a = uc.RegistUser();
@@ -70,7 +69,7 @@ public class View {
         //register
     }
 
-    public static void GeneralUserView(String username) throws IOException {
+    public void GeneralUserView(String username) throws IOException {
         boolean power = true;
 
         while(power){
@@ -120,7 +119,7 @@ public class View {
         //
     }
 
-    public static void AdminView() throws IOException {
+    public void AdminView() throws IOException {
         boolean power = true;
 
         BookControl bc = new BookControl();
@@ -165,7 +164,7 @@ public class View {
 
     }
 
-    public static void SearchBookView() throws IOException {
+    public void SearchBookView() throws IOException {
         System.out.println("책 검색창");
 
         boolean power = true;
@@ -217,7 +216,7 @@ public class View {
         }
     }
 
-    public static void ReviseMyBook(String username) throws IOException {
+    public void ReviseMyBook(String username) throws IOException {
         System.out.println("내 책 정보 수정");
         boolean power = true;
         BookControl bc = new BookControl();
@@ -252,7 +251,7 @@ public class View {
         }
     }
 
-    public static void TradeBookView(String username) throws IOException {
+    public void TradeBookView(String username) throws IOException {
         System.out.println("등록된 책 중 구매하실 책이 있습니까?");
         boolean power = true;
         int id;
@@ -282,7 +281,7 @@ public class View {
         }
     }
 
-    public static void RemoveBookView() throws IOException {
+    public void RemoveBookView() throws IOException {
         System.out.println("검색된 책 중 삭제할 책이 있습니까?");
         boolean power = true;
         int id;
@@ -312,7 +311,7 @@ public class View {
     }
 
 
-    public static void ReviseUsersView() throws IOException {
+    public void ReviseUsersView() throws IOException {
         System.out.println("Revise Users");
         System.out.println("검색된 유저중 삭제 또는 비활성화할 유저가 있습니까?");
         boolean power = true;

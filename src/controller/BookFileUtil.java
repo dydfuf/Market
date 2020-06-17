@@ -83,9 +83,9 @@ public class BookFileUtil {
                 book.setAuthor(writeStr[1]);
                 book.setPublisher(writeStr[2]);
                 book.setPublication_year(writeStr[3]);
-                book.setISBN(Integer.parseInt(writeStr[4]));
-                book.setPrice(Integer.parseInt(writeStr[5]));
-                book.setBook_condition(Book.Book_cond.valueOf(writeStr[6]));
+                book.setISBN(writeStr[4]);
+                book.setPrice(writeStr[5]);
+                book.setBook_condition(writeStr[6]);
                 book.setIdentifyNumber(Integer.parseInt(writeStr[7]));
                 book.setSeller(writeStr[8]);
 

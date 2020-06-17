@@ -4,22 +4,18 @@ public class Book {
 
     public Book() { }
 
-    public enum Book_cond {
-        Excellent, Good, Fair;
-    }
-
     private String title;
     private String author;
     private String publisher;
     private String publication_year;
-    private int ISBN;
-    private int price;
-    private Book_cond book_condition;
+    private String ISBN;
+    private String price;
+    private String book_condition;
     private int identifyNumber;
     private String seller;
 
-    public Book(String title, String author, String publisher, String publication_year, int ISBN,
-                int price, Book_cond book_condition, int identifyNumber, String seller){
+    public Book(String title, String author, String publisher, String publication_year, String ISBN,
+                String price, String book_condition, int identifyNumber, String seller){
         this.title = title;
         this.author = author;
         this.publisher = publisher;
@@ -36,8 +32,8 @@ public class Book {
         this.author = null;
         this.publisher = null;
         this.publication_year = null;
-        this.ISBN = 0;
-        this.price = 0;
+        this.ISBN = null;
+        this.price = null;
         this.book_condition = null;
         this.seller = seller;
     }
@@ -62,15 +58,15 @@ public class Book {
         return publication_year;
     }
 
-    public int getISBN(){
+    public String getISBN(){
         return ISBN;
     }
 
-    public int getPrice(){
+    public String getPrice(){
         return price;
     }
 
-    public Book_cond getBook_condition(){ return book_condition; }
+    public String getBook_condition(){ return book_condition; }
 
     public void setTitle(String title){
         this.title = title;
@@ -80,15 +76,18 @@ public class Book {
         this.author = author;
     }
 
-    public void setBook_condition(Book_cond book_condition) {
-        this.book_condition = book_condition;
+    public void setBook_condition(String book_condition) {
+        if(book_condition.equals("")){
+            this.book_condition = "Excellent";
+        }
+        else this.book_condition = book_condition;
     }
 
-    public void setISBN(int ISBN) {
+    public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

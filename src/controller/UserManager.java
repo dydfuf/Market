@@ -107,12 +107,13 @@ public class UserManager {
     public void showAllUser(){
         for(int idx = 0; idx < this.UserList.size(); idx ++){
             System.out.println("-------------------------------");
-            System.out.println("Id : " + this.UserList.get(idx).getId() +
-                    "\nPasswd : " + this.UserList.get(idx).getPasswd() +
-                    "\nName : " + this.UserList.get(idx).getName() +
-                    "\nE-mail : " + this.UserList.get(idx).getMail_address() +
-                    "\nPhone Number : " + this.UserList.get(idx).getPhone_number() +
-                    "\nActivate : " + this.UserList.get(idx).getActivated()
+            System.out.println(
+                    String.format("%-12s", "ID") + " : " + this.UserList.get(idx).getId() + "\n" +
+                    String.format("%-12s", "Password") + " : " + this.UserList.get(idx).getPasswd() + "\n" +
+                    String.format("%-12s", "Name") + " : " + this.UserList.get(idx).getName() + "\n" +
+                    String.format("%-12s", "E-mail") + " : " + this.UserList.get(idx).getMail_address() + "\n" +
+                    String.format("%-12s", "Phone Number") + " : " + this.UserList.get(idx).getPhone_number() + "\n" +
+                    String.format("%-12s", "Activate") + " : " + this.UserList.get(idx).getActivated()
             );
             System.out.println("-------------------------------");
         }

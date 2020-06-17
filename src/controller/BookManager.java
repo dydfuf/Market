@@ -118,7 +118,7 @@ public class BookManager {
             case "ISBN":
                 for(int idx =0; idx<this.BookList.size(); idx ++){
                     Book tempBook = this.BookList.get(idx);
-                    if(Integer.parseInt(choice) == tempBook.getISBN()){
+                    if(choice.equals(tempBook.getISBN())){
                         tempBookList.add(tempBook);
                     }
                 }
@@ -166,15 +166,15 @@ public class BookManager {
         for(int idx = 0; idx < this.BookList.size(); idx ++){
             System.out.println("-------------------------------");
             System.out.println(
-                    "Identify Number : " + this.BookList.get(idx).getIdentifyNumber() +
-                    "\nTitle : " + this.BookList.get(idx).getTitle() +
-                    "\nAuthor : " + this.BookList.get(idx).getAuthor() +
-                    "\nPublisher : " + this.BookList.get(idx).getPublisher() +
-                    "\nPublication Year : " + this.BookList.get(idx).getPublication_year() +
-                    "\nISBN : " + this.BookList.get(idx).getISBN() +
-                    "\nPrice : " + this.BookList.get(idx).getPrice() +
-                    "\nBook Condition : " + this.BookList.get(idx).getBook_condition() +
-                    "\nSeller : " + this.BookList.get(idx).getSeller()
+                    String.format("%-16s", "Identify Number") + " : "+ this.BookList.get(idx).getIdentifyNumber() + "\n" +
+                    String.format("%-16s", "Title") + " : " + this.BookList.get(idx).getTitle() + "\n" +
+                    String.format("%-16s", "Author") + " : " + this.BookList.get(idx).getAuthor() + "\n" +
+                    String.format("%-16s", "Publisher") + " : " + this.BookList.get(idx).getPublisher() + "\n" +
+                    String.format("%-16s", "Publication Year") + " : " + this.BookList.get(idx).getPublication_year() + "\n" +
+                    String.format("%-16s", "ISBN") + " : " + this.BookList.get(idx).getISBN() + "\n" +
+                    String.format("%-16s", "Price") + " : " + this.BookList.get(idx).getPrice() + "\n" +
+                    String.format("%-16s", "Book Condition") + " : " + this.BookList.get(idx).getBook_condition() + "\n" +
+                    String.format("%-16s", "Seller") + " : " + this.BookList.get(idx).getSeller()
             );
             System.out.println("-------------------------------");
         }
