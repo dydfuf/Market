@@ -11,9 +11,9 @@ public class UserControl {
     public BookManager bm = new BookManager();
     public Scanner scanner = new Scanner(System.in);
 
-    private String filepath = "/Users/choeyonglyeol/IdeaProjects/test";
-    private String UserFileName = "UserList.txt";
-    private String filename = "BookList.txt";
+    private final String filepath = "/Users/choeyonglyeol/IdeaProjects/test";
+    private final String UserFileName = "UserList.txt";
+    private final String filename = "BookList.txt";
 
     public void ShowUserList() throws IOException {
         um.setUserList(UserFileUtil.readFile(new File(filepath, UserFileName)));

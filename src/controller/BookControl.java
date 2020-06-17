@@ -12,7 +12,7 @@ public class BookControl {
 
     public BookManager bm = new BookManager();
 
-    private String filepath = "/Users/choeyonglyeol/IdeaProjects/test";
+    private final String filepath = "/Users/choeyonglyeol/IdeaProjects/test";
     private final String filename = "BookList.txt";
 
     public void ShowBookList() throws IOException {
