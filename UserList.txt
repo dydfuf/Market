@@ -3,4 +3,3 @@ id,paswd,name,3k,kkd,0
 ㅛㅛ,yy,yy,yy,yy,0
 new2,new2,new2,new2,new2,0
 new3,new3,new3,new3,new3,0
-ucid,ucpaswd,name,pn,email,0

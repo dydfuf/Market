@@ -7,24 +7,24 @@ import java.util.Scanner;
 public class UserControl {
     public UserControl() {
     }
-    public static UserManager um = new UserManager();
-    public static BookManager bm = new BookManager();
-    public static Scanner scanner = new Scanner(System.in);
+    public UserManager um = new UserManager();
+    public BookManager bm = new BookManager();
+    public Scanner scanner = new Scanner(System.in);
 
-    public static String filepath = "/Users/choeyonglyeol/IdeaProjects/test";
-    public static String UserFileName = "UserList.txt";
-    public static String filename = "BookList.txt";
+    private String filepath = "/Users/choeyonglyeol/IdeaProjects/test";
+    private String UserFileName = "UserList.txt";
+    private String filename = "BookList.txt";
 
-    public static void ShowUserList() throws IOException {
+    public void ShowUserList() throws IOException {
         um.setUserList(UserFileUtil.readFile(new File(filepath, UserFileName)));
         um.showAllUser();
     }
 
-    public static String Login() throws IOException {
+    public String Login() throws IOException {
         um.setUserList(UserFileUtil.readFile(new File(filepath, UserFileName)));
-        System.out.printf("ID : ");
+        System.out.print("ID : ");
         String id = scanner.next();
-        System.out.printf("Passwd : ");
+        System.out.print("Passwd : ");
         String passwd = scanner.next();
         int ret = um.compareToLogin(id, passwd);
         if(ret == 0) {
@@ -38,20 +38,20 @@ public class UserControl {
         return "";
     }
 
-    public static int RegistUser() throws IOException {
+    public int RegistUser() throws IOException {
         um.setUserList(UserFileUtil.readFile(new File(filepath, UserFileName)));
         int a = um.addUser(UserMaker.makeUser());
         UserFileUtil.writeFile(filepath, UserFileName, um.getUserList());
         return a;
     }
 
-    public static void ActivateUser(String id, int active) throws IOException {
+    public void ActivateUser(String id, int active) throws IOException {
         um.setUserList(UserFileUtil.readFile(new File(filepath, UserFileName)));
         um.ActivateUser(id,active);
         UserFileUtil.writeFile(filepath, UserFileName, um.getUserList());
     }
 
-    public static void RemoveUser(String id) throws IOException {
+    public void RemoveUser(String id) throws IOException {
         um.setUserList(UserFileUtil.readFile(new File(filepath, UserFileName)));
         bm.setBookList(BookFileUtil.readFile(new File(filepath, filename)));
 
