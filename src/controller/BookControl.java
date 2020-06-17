@@ -17,7 +17,7 @@ public class BookControl {
 
     public void ShowBookList() throws IOException {
         bm.setBookList(BookFileUtil.readFile(new File(filepath, filename)));
-        System.out.println("총 몇개의 책? " + bm.getBookList().size());
+        System.out.println("총 "+ bm.getBookList().size() + "개의 책이 있습니다. ");
         bm.showAllBook();
     }
 

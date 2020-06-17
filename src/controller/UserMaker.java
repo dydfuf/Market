@@ -8,27 +8,25 @@ public class UserMaker {
     public UserMaker() {
     }
     public static Scanner scanner = new Scanner(System.in);
-    final private String EmailPattern = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
-    final private String PhoneNumberPattern = "^01(?:0|1|[6-9])[.-]?(\\d{3}|\\d{4})[.-](\\d{4})$";
 
     public GeneralUser makeUser(){
 
         scanner.reset();
         GeneralUser user = new GeneralUser();
 
-        System.out.printf("Id : ");
+        System.out.print("Id : ");
         user.setId(scanner.next());
 
-        System.out.printf("Passwd : ");
+        System.out.print("Passwd : ");
         user.setPasswd(scanner.next());
 
-        System.out.printf("Name : ");
+        System.out.print("Name : ");
         user.setName(scanner.next());
 
-        System.out.printf("E-mail : ");
+        System.out.print("E-mail : ");
         user.setMail_address(checkEmail(scanner.next()));
 
-        System.out.printf("Phone Number : ");
+        System.out.print("Phone Number : ");
         user.setPhone_number(checkPhoneNumber(scanner.next()));
 
         user.setActivated(0);
@@ -40,7 +38,8 @@ public class UserMaker {
         boolean valid;
         boolean power = true;
         while(power){
-            valid = email.matches(EmailPattern);
+            String emailPattern = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
+            valid = email.matches(emailPattern);
             if(valid){
                 power = false;
             }
@@ -56,7 +55,8 @@ public class UserMaker {
         boolean valid;
         boolean power = true;
         while(power){
-            valid = PNumber.matches(PhoneNumberPattern);
+            String phoneNumberPattern = "^01(?:0|1|[6-9])[.-]?(\\d{3}|\\d{4})[.-](\\d{4})$";
+            valid = PNumber.matches(phoneNumberPattern);
             if(valid){
                 power = false;
             }
