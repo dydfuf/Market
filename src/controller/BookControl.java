@@ -24,7 +24,8 @@ public class BookControl {
     public void AddBook(String username) throws IOException {
         bm.setBookList(BookFileUtil.readFile(new File(filepath, filename)));
         Book tempBook;
-        tempBook = BookMaker.makeBook(username);
+        BookMaker bmaker = new BookMaker();
+        tempBook = bmaker.makeBook(username);
         tempBook.setIdentifyNumber(bm.getSize()+1);
         bm.addBook(tempBook);
         BookFileUtil.writeFile(filepath, filename, bm.getBookList());

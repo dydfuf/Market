@@ -11,26 +11,65 @@ public class BookMaker {
     public BookMaker() {
     }
     public static Scanner scanner = new Scanner(System.in);
-    public static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
-    public static Book makeBook(String username) throws IOException {
+    public Book makeBook(String username){
         scanner.reset();
         Book book = new Book();
         System.out.print("Title : ");
-        book.setTitle(scanner.next());
+        book.setTitle(checkIsEmpty(scanner.nextLine()));
         System.out.print("Author : ");
-        book.setAuthor(bf.readLine());
+        book.setAuthor(scanner.nextLine());
         System.out.print("Publisher : ");
-        book.setPublisher(bf.readLine());
+        book.setPublisher(scanner.nextLine());
         System.out.print("Publication Year : ");
-        book.setPublication_year(bf.readLine());
+        book.setPublication_year(scanner.nextLine());
         System.out.print("ISBN : ");
-        book.setISBN(bf.readLine());
+        book.setISBN(scanner.nextLine());
         System.out.print("Price : ");
-        book.setPrice(bf.readLine());
-        System.out.print("Book Condition : ");
-        book.setBook_condition(bf.readLine());
+        book.setPrice(scanner.nextLine());
+        System.out.print("Book Condition(1.Excellent 2.Good 3.Fair) : ");
+        book.setBook_condition(isValidCond(scanner.nextLine()));
         book.setSeller(username);
         return book;
+    }
+
+    public String checkIsEmpty(String title){
+        boolean power = true;
+        while(power){
+            if(title.isEmpty()){
+                System.out.println("제목을 입력 해야 합니다.");
+                System.out.print("Title : ");
+                title = scanner.nextLine();
+            }
+            else power = false;
+        }
+        return title;
+    }
+
+    public String isValidCond(String bookCond){
+        boolean power = true;
+        while(power){
+            if(bookCond.isEmpty()){
+                bookCond = "Excellent";
+                power = false;
+            }
+            else if(bookCond.equals("1")){
+                bookCond = "Excellent";
+                power = false;
+            }
+            else if(bookCond.equals("2")){
+                bookCond = "Good";
+                power = false;
+            }
+            else if(bookCond.equals("3")){
+                bookCond = "Fair";
+                power = false;
+            }
+            else{
+                System.out.println("1~3사이의 숫자를 입력 하세요 Default = Excellent");
+                bookCond = scanner.nextLine();
+            }
+        }
+        return bookCond;
     }
 }

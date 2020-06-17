@@ -27,7 +27,6 @@ public class View {
             switch(menuNum){
                 case 1:
                     String a = us.Login();
-                    //String a = UserControl.Login();
                     if(a.equals("admin")){
                         AdminView();
                         login = false;

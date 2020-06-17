@@ -2,9 +2,7 @@ package controller;
 
 import model.Book;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class BookManager {
@@ -68,11 +66,11 @@ public class BookManager {
         try{
             for(int idx =0; idx<this.BookList.size(); idx ++){
                 Book tempBook = this.BookList.get(idx);
-
+                BookMaker bm = new BookMaker();
                 if(identifyNumber == tempBook.getIdentifyNumber()){
                     if(username.equals(tempBook.getSeller())){
                         System.out.println("----------수정할 책의 정보를 입력해 주세요----------");
-                        Book book = BookMaker.makeBook(tempBook.getSeller());
+                        Book book = bm.makeBook(tempBook.getSeller());
                         book.setIdentifyNumber(identifyNumber);
 
                         this.BookList.remove(idx);
