@@ -40,7 +40,8 @@ public class UserControl {
 
     public int RegistUser() throws IOException {
         um.setUserList(UserFileUtil.readFile(new File(filepath, UserFileName)));
-        int a = um.addUser(UserMaker.makeUser());
+        UserMaker umaker = new UserMaker();
+        int a = um.addUser(umaker.makeUser());
         UserFileUtil.writeFile(filepath, UserFileName, um.getUserList());
         return a;
     }

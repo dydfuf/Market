@@ -4,3 +4,9 @@ id,paswd,name,3k,kkd,0
 new2,new2,new2,new2,new2,0
 new3,new3,new3,new3,new3,0
 ㅑㅇ,ㅣㄴ암,ㅇ니마러,ㅁㄴ이ㅏ러,ㅁㄴ아ㅣ러,0
+newid,pas,name,pan,dd,0
+asd,asd,asd,asd,ads,0
+nasd,sldkf,sdkf,010-4661-8276,88dydfuf@naver.com,0
+voi,voi,voi,010-4661-8276,voi,0
+dingo,paswd,name,010-4661-8276,88dydfuf@naver.com,0
+doil,paswd,김도일,010-9920-9921,doili@naver.com,0
