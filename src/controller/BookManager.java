@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BookManager {
 
-    private List<Book> BookList = new ArrayList<Book>();
+    private List<Book> BookList = new ArrayList<>();
 
     public List<Book> getBookList(){
         return this.BookList;
@@ -98,14 +98,13 @@ public class BookManager {
 
     public int SearchBook(String choice, String Searchby){
         int ret = 0;
-        List<Book> tempBookList = new ArrayList<Book>();
+        List<Book> tempBookList = new ArrayList<>();
         BookManager TempBM = new BookManager();
         switch(Searchby){
             case "title":
-                for(int idx =0; idx<this.BookList.size(); idx ++){
-                Book tempBook = this.BookList.get(idx);
-                if(tempBook.getTitle().contains(choice)){
-                    tempBookList.add(tempBook);
+                for (Book tempBook : this.BookList) {
+                    if (tempBook.getTitle().contains(choice)) {
+                        tempBookList.add(tempBook);
                     }
                 }
                 if(tempBookList.isEmpty()){
@@ -114,9 +113,8 @@ public class BookManager {
                 }
                 break;
             case "ISBN":
-                for(int idx =0; idx<this.BookList.size(); idx ++){
-                    Book tempBook = this.BookList.get(idx);
-                    if(choice.equals(tempBook.getISBN())){
+                for (Book tempBook : this.BookList) {
+                    if (choice.equals(tempBook.getISBN())) {
                         tempBookList.add(tempBook);
                     }
                 }
@@ -126,9 +124,8 @@ public class BookManager {
                 }
                 break;
             case "author":
-                for(int idx =0; idx<this.BookList.size(); idx ++){
-                    Book tempBook = this.BookList.get(idx);
-                    if(tempBook.getAuthor().contains(choice)){
+                for (Book tempBook : this.BookList) {
+                    if (tempBook.getAuthor().contains(choice)) {
                         tempBookList.add(tempBook);
                     }
                 }
@@ -138,9 +135,8 @@ public class BookManager {
                 }
                 break;
             case "seller":
-                for(int idx =0; idx<this.BookList.size(); idx ++){
-                    Book tempBook = this.BookList.get(idx);
-                    if(tempBook.getSeller().contains(choice)){
+                for (Book tempBook : this.BookList) {
+                    if (tempBook.getSeller().contains(choice)) {
                         tempBookList.add(tempBook);
                     }
                 }
@@ -161,25 +157,25 @@ public class BookManager {
     }
 
     public void showAllBook(){
-        for(int idx = 0; idx < this.BookList.size(); idx ++){
+        for (Book book : this.BookList) {
             System.out.println("-------------------------------");
             System.out.println(
-                    String.format("%-16s", "Identify Number") + " : "+ this.BookList.get(idx).getIdentifyNumber() + "\n" +
-                    String.format("%-16s", "Title") + " : " + this.BookList.get(idx).getTitle() + "\n" +
-                    String.format("%-16s", "Author") + " : " + this.BookList.get(idx).getAuthor() + "\n" +
-                    String.format("%-16s", "Publisher") + " : " + this.BookList.get(idx).getPublisher() + "\n" +
-                    String.format("%-16s", "Publication Year") + " : " + this.BookList.get(idx).getPublication_year() + "\n" +
-                    String.format("%-16s", "ISBN") + " : " + this.BookList.get(idx).getISBN() + "\n" +
-                    String.format("%-16s", "Price") + " : " + this.BookList.get(idx).getPrice() + "\n" +
-                    String.format("%-16s", "Book Condition") + " : " + this.BookList.get(idx).getBook_condition() + "\n" +
-                    String.format("%-16s", "Seller") + " : " + this.BookList.get(idx).getSeller()
+                            String.format("%-16s", "Identify Number") + " : " + book.getIdentifyNumber() + "\n" +
+                            String.format("%-16s", "Title") + " : " + book.getTitle() + "\n" +
+                            String.format("%-16s", "Author") + " : " + book.getAuthor() + "\n" +
+                            String.format("%-16s", "Publisher") + " : " + book.getPublisher() + "\n" +
+                            String.format("%-16s", "Publication Year") + " : " + book.getPublication_year() + "\n" +
+                            String.format("%-16s", "ISBN") + " : " + book.getISBN() + "\n" +
+                            String.format("%-16s", "Price") + " : " + book.getPrice() + "\n" +
+                            String.format("%-16s", "Book Condition") + " : " + book.getBook_condition() + "\n" +
+                            String.format("%-16s", "Seller") + " : " + book.getSeller()
             );
             System.out.println("-------------------------------");
         }
     }
 
-    public void tradeBook(String username, int identifyNumber){
-
+    public String tradeBook(String username, int identifyNumber){
+        String ret = "";
         for(int idx =0; idx<this.BookList.size(); idx ++){
             Book tempBook = this.BookList.get(idx);
 
@@ -189,11 +185,7 @@ public class BookManager {
                     break;
                 }
                 else{
-                    System.out.println("----------Trade----------");
-                    System.out.println("Buyer : " + username);
-                    System.out.println("Seller : " + tempBook.getSeller());
-                    System.out.println("E-mail sended to Seller !!");
-                    System.out.println("-------------------------");
+                    ret = tempBook.getSeller();
                 }
                 break;
             }
@@ -201,6 +193,7 @@ public class BookManager {
                 System.out.println("해당 정보를 찾을 수 없습니다.");
             }
         }
+        return ret;
     }
 
     public void RemoveBookById(String id){

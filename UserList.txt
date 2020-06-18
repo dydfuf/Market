@@ -1,4 +1,4 @@
-test,test,test,010-4661-8276,88dydfuf@naver.com,0
+test,test,test,010-4661-8276,88testdydfuf@naver.com,0
 dingo,paswd,name,010-4661-8276,88dydfuf@naver.com,0
 doil,paswd,김도일,010-9920-9921,doili@naver.com,0
 test2,test2,test,010-1111-1111,a@aa.com,1

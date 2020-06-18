@@ -7,7 +7,7 @@ import java.util.List;
 
 public class UserManager {
 
-    private List<GeneralUser> UserList = new ArrayList<GeneralUser>();
+    private List<GeneralUser> UserList = new ArrayList<>();
 
     public List<GeneralUser> getUserList() { return this.UserList; }
 
@@ -17,9 +17,8 @@ public class UserManager {
         int ret = 0;
         int dup = 0;
         try{
-            for(int idx = 0; idx<this.UserList.size(); idx++){
-                GeneralUser tempUser = this.UserList.get(idx);
-                if(tempUser.getId().equals(User.getId())) {
+            for (GeneralUser tempUser : this.UserList) {
+                if (tempUser.getId().equals(User.getId())) {
                     dup = 1;
                 }
             }
@@ -104,15 +103,15 @@ public class UserManager {
     }
 
     public void showAllUser(){
-        for(int idx = 0; idx < this.UserList.size(); idx ++){
+        for (GeneralUser generalUser : this.UserList) {
             System.out.println("-------------------------------");
             System.out.println(
-                    String.format("%-12s", "ID") + " : " + this.UserList.get(idx).getId() + "\n" +
-                    String.format("%-12s", "Password") + " : " + this.UserList.get(idx).getPasswd() + "\n" +
-                    String.format("%-12s", "Name") + " : " + this.UserList.get(idx).getName() + "\n" +
-                    String.format("%-12s", "E-mail") + " : " + this.UserList.get(idx).getMail_address() + "\n" +
-                    String.format("%-12s", "Phone Number") + " : " + this.UserList.get(idx).getPhone_number() + "\n" +
-                    String.format("%-12s", "Activate") + " : " + this.UserList.get(idx).getActivated()
+                            String.format("%-12s", "ID") + " : " + generalUser.getId() + "\n" +
+                            String.format("%-12s", "Password") + " : " + generalUser.getPasswd() + "\n" +
+                            String.format("%-12s", "Name") + " : " + generalUser.getName() + "\n" +
+                            String.format("%-12s", "E-mail") + " : " + generalUser.getMail_address() + "\n" +
+                            String.format("%-12s", "Phone Number") + " : " + generalUser.getPhone_number() + "\n" +
+                            String.format("%-12s", "Activate") + " : " + generalUser.getActivated()
             );
             System.out.println("-------------------------------");
         }
@@ -127,7 +126,6 @@ public class UserManager {
                 if(tempUser.getActivated() == active){
                     if(active == 0) System.out.println("이미 활성화된 유저 입니다.");
                     else if(active == 1) System.out.println("이미 비활성화된 유저 입니다.");
-                    break;
                 }
                 else{
                     temp.setId(tempUser.getId());
@@ -140,13 +138,28 @@ public class UserManager {
                     this.UserList.add(idx, temp);
                     if(active == 0) System.out.println("활성화 완료!");
                     else if(active == 1) System.out.println("비활성화 완료!");
-                    break;
                 }
+                break;
             }
 
             if(idx == this.UserList.size()-1){
                 System.out.println("해당 유저가 없습니다.");
             }
         }
+    }
+
+    public String getEmail(String id){
+        for(int idx = 0; idx<this.UserList.size(); idx++){
+            GeneralUser tempUser = this.UserList.get(idx);
+
+            if(id.equals(tempUser.getId())){
+                return tempUser.getMail_address();
+            }
+
+            if(idx == this.UserList.size()-1){
+                System.out.println("해당 유저가 없습니다.");
+            }
+        }
+        return "";
     }
 }

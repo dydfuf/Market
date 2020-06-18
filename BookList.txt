@@ -1,1 +1,4 @@
-counting my guap,changmo,ambition,2020,100,2000,Good,5,dingo
+counting my guap,changmo,ambition,2020,100,2000,Good,1,dingo
+title,author,publisher,,,백만원,Fair,2,test
+title,author,publisher,,,백만원,Excellent,3,test
+no,,,,,,Excellent,4,test

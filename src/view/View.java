@@ -13,6 +13,8 @@ public class View {
 
     public static Scanner scanner = new Scanner(System.in);
 
+    public static String LoginUserName;
+
     public void LoginView() throws IOException {
         boolean login = true;
 
@@ -26,17 +28,17 @@ public class View {
 
             switch(menuNum){
                 case 1:
-                    String a = us.Login();
-                    if(a.equals("admin")){
+                    LoginUserName = us.Login();
+                    if(LoginUserName.equals("admin")){
                         AdminView();
                         login = false;
                     }
-                    else if(a.isEmpty()){
+                    else if(LoginUserName.isEmpty()){
                         //why this state need?
                         System.out.println("로그인 에러");
                     }
                     else{
-                        GeneralUserView(a);
+                        GeneralUserView();
                     }
                     //goto GeneralUserView or AdminView
                     break;
@@ -68,11 +70,11 @@ public class View {
         //register
     }
 
-    public void GeneralUserView(String username) throws IOException {
+    public void GeneralUserView() throws IOException {
         boolean power = true;
 
         while(power){
-            System.out.println("일반유저 창\n" + "User name : " + username);
+            System.out.println("일반유저 창\n" + "User name : " + LoginUserName);
             System.out.println("1.등록된 책 전부 보기 2.책 검색하기 3.내가 등록한 책 보기 4.책 등록하기 5.이전으로 가기 6.종료");
             scanner.reset();
             int menuNum = scanner.nextInt();
@@ -82,23 +84,23 @@ public class View {
                     //view all books
                     bc.ShowBookList();
                     //BookControl.ShowBookList();
-                    TradeBookView(username);
+                    TradeBookView();
                     //goto TradeBookView
                     break;
                 case 2:
                     //Search and view books
                     SearchBookView();
-                    TradeBookView(username);
+                    TradeBookView();
                     //goto SearchBooksView
                     break;
                 case 3:
                     //view what I registered book
-                    bc.SearchBook(username, "seller");
-                    ReviseMyBook(username);
+                    bc.SearchBook(LoginUserName, "seller");
+                    ReviseMyBook(LoginUserName);
                     //goto ReviseMyBookView
                     break;
                 case 4:
-                    bc.AddBook(username);
+                    bc.AddBook(LoginUserName);
                     //Register Book
                     //goto RegisterBookView
                     break;
@@ -250,7 +252,7 @@ public class View {
         }
     }
 
-    public void TradeBookView(String username) throws IOException {
+    public void TradeBookView() throws IOException {
         System.out.println("등록된 책 중 구매하실 책이 있습니까?");
         boolean power = true;
         int id;
@@ -265,7 +267,7 @@ public class View {
                     //update book
                     System.out.print("구매하실 책의 Identify Number를 입력해 주세요 : ");
                     id = scanner.nextInt();
-                    bc.TradeBook(username, id);
+                    bc.TradeBook(LoginUserName, id);
                     power = false;
                     break;
                 case 2:

@@ -2,9 +2,6 @@ package controller;
 
 import model.Book;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class BookMaker {
@@ -16,7 +13,7 @@ public class BookMaker {
         scanner.reset();
         Book book = new Book();
         System.out.print("Title : ");
-        book.setTitle(checkIsEmpty(scanner.nextLine()));
+        book.setTitle(checkTitle(scanner.nextLine()));
         System.out.print("Author : ");
         book.setAuthor(scanner.nextLine());
         System.out.print("Publisher : ");
@@ -28,12 +25,12 @@ public class BookMaker {
         System.out.print("Price : ");
         book.setPrice(scanner.nextLine());
         System.out.print("Book Condition(1.Excellent 2.Good 3.Fair) : ");
-        book.setBook_condition(isValidCond(scanner.nextLine()));
+        book.setBook_condition(checkBookCond(scanner.nextLine()));
         book.setSeller(username);
         return book;
     }
 
-    public String checkIsEmpty(String title){
+    public String checkTitle(String title){
         boolean power = true;
         while(power){
             if(title.isEmpty()){
@@ -46,7 +43,7 @@ public class BookMaker {
         return title;
     }
 
-    public String isValidCond(String bookCond){
+    public String checkBookCond(String bookCond){
         boolean power = true;
         while(power){
             if(bookCond.isEmpty()){

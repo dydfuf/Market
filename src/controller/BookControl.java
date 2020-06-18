@@ -1,9 +1,11 @@
 package controller;
 
 import model.Book;
+import model.GeneralUser;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class BookControl {
 
@@ -11,9 +13,11 @@ public class BookControl {
     }
 
     public BookManager bm = new BookManager();
+    public UserManager um = new UserManager();
 
     private final String filepath = "/Users/choeyonglyeol/IdeaProjects/test";
     private final String filename = "BookList.txt";
+    private final String UserFileName = "UserList.txt";
 
     public void ShowBookList() throws IOException {
         bm.setBookList(BookFileUtil.readFile(new File(filepath, filename)));
@@ -50,9 +54,16 @@ public class BookControl {
 
     public void TradeBook(String username, int IdentifyNumber) throws IOException {
         bm.setBookList(BookFileUtil.readFile(new File(filepath, filename)));
-        bm.tradeBook(username, IdentifyNumber);
+        um.setUserList(UserFileUtil.readFile(new File(filepath, UserFileName)));
+        String seller = bm.tradeBook(username, IdentifyNumber);
+        if(!seller.isEmpty()){
+            System.out.println("----------Trade----------");
+            System.out.println("Buyer's Email : " + um.getEmail(username));
+            System.out.println("Seller's Email : " + seller);
+            System.out.println("E-mail sended to Seller !!");
+            System.out.println("-------------------------");
+        }
         BookFileUtil.writeFile(filepath, filename, bm.getBookList());
-
     }
 
 }
