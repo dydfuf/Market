@@ -1,5 +1,1 @@
-e,e,e,e,1,1,Good,1,new
-newt,newa,newt,1,1,1,Good,2,dingo
-title,1,1,1,1,1,Good,3,id
-title,,p,f,1,1,Good,4,doil
 counting my guap,changmo,ambition,2020,100,2000,Good,5,dingo
