@@ -8,6 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class BookMakerTest {
 
     @Test
+    void makeBook(){
+        BookMaker bm = new BookMaker();
+        bm.makeBook("TestUser");
+    }
+
+
+    @Test
     void checkTitle() {
         BookMaker bm = new BookMaker();
         assertTrue(bm.checkTitle("title"));
