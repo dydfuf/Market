@@ -1,6 +1,7 @@
 package test;
 
 import controller.UserMaker;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,5 +22,11 @@ class UserMakerTest {
 
     @Test
     void checkPhoneNumber() {
+        UserMaker um = new UserMaker();
+        assertTrue(um.checkPhoneNumber("010-4661-8276"));
+        assertTrue(um.checkPhoneNumber("010-461-8276"));
+        assertTrue(um.checkPhoneNumber("017-4661-8286"));
+
+
     }
 }

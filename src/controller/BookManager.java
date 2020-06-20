@@ -44,6 +44,7 @@ public class BookManager {
                     }
                     else{
                         System.out.println("본인의 책만 삭제 가능합니다!");
+                        ret = 3;
                         break;
                     }
                 }
@@ -80,6 +81,7 @@ public class BookManager {
                     }
                     else{
                         System.out.println("본인의 책만 수정 가능합니다!");
+                        ret = 3;
                         break;
                     }
                 }
