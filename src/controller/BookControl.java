@@ -1,11 +1,9 @@
 package controller;
 
 import model.Book;
-import model.GeneralUser;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 public class BookControl {
 
@@ -40,7 +38,7 @@ public class BookControl {
         return bm.SearchBook(choice, type);
     }
 
-    public void ReviseBook(String username, int IdentifyNumber) throws IOException {
+    public void UpdateBook(String username, int IdentifyNumber) throws IOException {
         bm.setBookList(BookFileUtil.readFile(new File(filepath, filename)));
         bm.updateBookInfo(username, IdentifyNumber);
         BookFileUtil.writeFile(filepath, filename, bm.getBookList());

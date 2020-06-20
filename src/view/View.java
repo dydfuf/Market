@@ -71,9 +71,7 @@ public class View {
     }
 
     public void GeneralUserView() throws IOException {
-        boolean power = true;
-
-        while(power){
+        while(true){
             System.out.println("일반유저 창\n" + "User name : " + LoginUserName);
             System.out.println("1.등록된 책 전부 보기 2.책 검색하기 3.내가 등록한 책 보기 4.책 등록하기 5.이전으로 가기 6.종료");
             scanner.reset();
@@ -89,14 +87,13 @@ public class View {
                     break;
                 case 2:
                     //Search and view books
-                    SearchBookView();
-                    TradeBookView();
+                    if(SearchBookView() == 0) TradeBookView();
                     //goto SearchBooksView
                     break;
                 case 3:
                     //view what I registered book
                     bc.SearchBook(LoginUserName, "seller");
-                    ReviseMyBook(LoginUserName);
+                    UpdateMyBook(LoginUserName);
                     //goto ReviseMyBookView
                     break;
                 case 4:
@@ -108,7 +105,6 @@ public class View {
                     LoginView();
                     //goto LoginView
                 case 6:
-                    power = false;
                     System.exit(0);
                     //exit
                 default:
@@ -116,17 +112,14 @@ public class View {
                     break;
             }
         }
-
-        //
     }
 
     public void AdminView() throws IOException {
-        boolean power = true;
 
         BookControl bc = new BookControl();
         UserControl uc = new UserControl();
 
-        while (power){
+        while (true){
             System.out.println("관리자 창");
             System.out.println("1.등록된 책 전부 보기 2.책 검색하기 3.등록된 유저 전부 보기 4.이전으로 가기 5.종료");
             int menuNum = scanner.nextInt();
@@ -138,8 +131,7 @@ public class View {
                     break;
                 case 2:
                     //Search books
-                    SearchBookView();
-                    RemoveBookView();
+                    if (SearchBookView() == 0) RemoveBookView();
                     //goto DeleteBooks
                     break;
                 case 3:
@@ -153,7 +145,6 @@ public class View {
                     //goto LoginView
                     break;
                 case 5:
-                    power = false;
                     System.exit(0);
                     //exit
                     break;
@@ -165,14 +156,14 @@ public class View {
 
     }
 
-    public void SearchBookView() throws IOException {
+    public int SearchBookView() throws IOException {
         System.out.println("책 검색창");
-
+        int ret = 0;
         boolean power = true;
         BookControl bc = new BookControl();
         while(power){
             scanner.reset();
-            System.out.println("1.책제목 2.ISBN번호 3.저자 4.판매자 5.뒤로가기");
+            System.out.println("1.책제목 2.ISBN번호 3.저자 4.판매자 5.출판사 6.출판년도 7.뒤로가기");
 
             int menuNum = scanner.nextInt();
             int a;
@@ -206,18 +197,33 @@ public class View {
                     if(a == 0) power = false;
                     break;
                 case 5:
+                    //search by publisher
+                    System.out.print("Publisher : ");
+                    String publisher = scanner.next();
+                    a = bc.SearchBook(publisher, "publisher");
+                    if(a == 0) power = false;
+                    break;
+                case 6:
+                    //search by publication year
+                    System.out.print("Publication Year : ");
+                    String publicationYear = scanner.next();
+                    a = bc.SearchBook(publicationYear, "publicationYear");
+                    if(a == 0) power = false;
+                    break;
+                case 7:
                     //go back to general user
                     power = false;
+                    ret = 1;
                     break;
                 default:
-                    System.out.println("1~5사이의 숫자를 입력하시기 바랍니다.");
+                    System.out.println("1~7사이의 숫자를 입력하시기 바랍니다.");
                     break;
-
             }
         }
+        return ret;
     }
 
-    public void ReviseMyBook(String username) throws IOException {
+    public void UpdateMyBook(String username) throws IOException {
         System.out.println("내 책 정보 수정");
         boolean power = true;
         BookControl bc = new BookControl();
@@ -232,7 +238,7 @@ public class View {
                     scanner.reset();
                     System.out.print("수정할 책의 Identify Number를 입력해 주세요 : ");
                     id = scanner.nextInt();
-                    bc.ReviseBook(username, id);
+                    bc.UpdateBook(username, id);
                     break;
                 case 2:
                     scanner.reset();
@@ -314,13 +320,13 @@ public class View {
 
     public void ReviseUsersView() throws IOException {
         System.out.println("Revise Users");
-        System.out.println("검색된 유저중 삭제 또는 비활성화할 유저가 있습니까?");
+        System.out.println("검색된 유저중 삭제 또는 활성/비활성화할 유저가 있습니까?");
         boolean power = true;
         UserControl uc = new UserControl();
         String id;
         while(power){
             scanner.reset();
-            System.out.println("1.삭제 2.비활성화 3.없음");
+            System.out.println("1.삭제 2.활성/비활성화 3.없음");
             int menuNum = scanner.nextInt();
             switch (menuNum){
                 case 1:
@@ -334,7 +340,7 @@ public class View {
                 case 2:
                     scanner.reset();
                     //update book
-                    System.out.print("비활성화 할 유저의 Id를 입력해 주세요 : ");
+                    System.out.print("활성/비활성화 할 유저의 Id를 입력해 주세요 : ");
                     id = scanner.next();
                     System.out.println("활성화 : 0, 비활성화 : 1");
                     int active = scanner.nextInt();

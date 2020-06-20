@@ -13,7 +13,18 @@ public class BookMaker {
         scanner.reset();
         Book book = new Book();
         System.out.print("Title : ");
-        book.setTitle(checkTitle(scanner.nextLine()));
+        String title = scanner.nextLine();
+        while(true){
+            if(checkTitle(title)){
+                book.setTitle(title);
+                break;
+            }
+            else {
+                System.out.println("제목은 반드시 입력 해야 합니다.");
+                System.out.print("Title : ");
+                title = scanner.nextLine();
+            }
+        }
         System.out.print("Author : ");
         book.setAuthor(scanner.nextLine());
         System.out.print("Publisher : ");
@@ -30,17 +41,12 @@ public class BookMaker {
         return book;
     }
 
-    public String checkTitle(String title){
-        boolean power = true;
-        while(power){
-            if(title.isEmpty()){
-                System.out.println("제목을 입력 해야 합니다.");
-                System.out.print("Title : ");
-                title = scanner.nextLine();
-            }
-            else power = false;
-        }
-        return title;
+    public boolean checkTitle(String title){
+        boolean ret = true;
+
+        if(title.isEmpty()) ret = false;
+
+        return ret;
     }
 
     public String checkBookCond(String bookCond){

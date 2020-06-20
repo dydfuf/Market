@@ -145,6 +145,29 @@ public class BookManager {
                     ret = 1;
                 }
                 break;
+            case "publisher":
+                for (Book tempBook : this.BookList) {
+                    if (tempBook.getPublisher().contains(choice)) {
+                        tempBookList.add(tempBook);
+                    }
+                }
+                if(tempBookList.isEmpty()){
+                    System.out.println("Publisher 정보 없음");
+                    ret = 1;
+                }
+                break;
+            case "publicationYear":
+                for (Book tempBook : this.BookList) {
+                    if (tempBook.getPublication_year().contains(choice)) {
+                        tempBookList.add(tempBook);
+                    }
+                }
+                if(tempBookList.isEmpty()){
+                    System.out.println("Publication Year 정보 없음");
+                    ret = 1;
+                }
+                break;
+
             default:
                 System.out.println("Search Type error!!");
                 break;

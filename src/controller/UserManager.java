@@ -20,10 +20,15 @@ public class UserManager {
             for (GeneralUser tempUser : this.UserList) {
                 if (tempUser.getId().equals(User.getId())) {
                     dup = 1;
+                    break;
                 }
             }
             if(dup == 1){
                 System.out.println("중복된 ID입니다. 다시 시도해 주세요.");
+                ret = 2;
+            }
+            else if(User.getId().equals("admin")){
+                System.out.println("ID를 admin으로 만들 수 없습니다.");
                 ret = 2;
             }
             else{
@@ -109,8 +114,8 @@ public class UserManager {
                             String.format("%-12s", "ID") + " : " + generalUser.getId() + "\n" +
                             String.format("%-12s", "Password") + " : " + generalUser.getPasswd() + "\n" +
                             String.format("%-12s", "Name") + " : " + generalUser.getName() + "\n" +
-                            String.format("%-12s", "E-mail") + " : " + generalUser.getMail_address() + "\n" +
-                            String.format("%-12s", "Phone Number") + " : " + generalUser.getPhone_number() + "\n" +
+                            String.format("%-12s", "E-mail") + " : " + generalUser.getMailAddress() + "\n" +
+                            String.format("%-12s", "Phone Number") + " : " + generalUser.getPhoneNumber() + "\n" +
                             String.format("%-12s", "Activate") + " : " + generalUser.getActivated()
             );
             System.out.println("-------------------------------");
@@ -131,8 +136,8 @@ public class UserManager {
                     temp.setId(tempUser.getId());
                     temp.setPasswd(tempUser.getPasswd());
                     temp.setName(tempUser.getName());
-                    temp.setMail_address(tempUser.getMail_address());
-                    temp.setPhone_number(tempUser.getPhone_number());
+                    temp.setMailAddress(tempUser.getMailAddress());
+                    temp.setPhoneNumber(tempUser.getPhoneNumber());
                     temp.setActivated(active);
                     this.UserList.remove(idx);
                     this.UserList.add(idx, temp);
@@ -153,7 +158,7 @@ public class UserManager {
             GeneralUser tempUser = this.UserList.get(idx);
 
             if(id.equals(tempUser.getId())){
-                return tempUser.getMail_address();
+                return tempUser.getMailAddress();
             }
 
             if(idx == this.UserList.size()-1){

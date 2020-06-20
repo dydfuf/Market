@@ -1,6 +1,6 @@
 package model;
 
-public class User {
+abstract class User {
     private String id;
     private String passwd;
 

@@ -17,7 +17,7 @@ public class UserFileUtil {
 
     public static List<GeneralUser> readFile(File file) throws IOException{
         FileReader fileReader = null;
-        List<GeneralUser> userList = new ArrayList<GeneralUser>();
+        List<GeneralUser> userList;
 
         try{
             fileReader = new FileReader(file);
@@ -46,10 +46,10 @@ public class UserFileUtil {
             }
 
             out = new BufferedOutputStream(new FileOutputStream(outFile));
-            for(int idx = 0; idx< userList.size(); idx++){
-                String writeStr = userList.get(idx).getId()+","+userList.get(idx).getPasswd()+","+userList.get(idx).getName()
-                        +","+userList.get(idx).getPhone_number()+","+userList.get(idx).getMail_address()+","+userList.get(idx).getActivated()
-                        +"\n";
+            for (GeneralUser generalUser : userList) {
+                String writeStr = generalUser.getId() + "," + generalUser.getPasswd() + "," + generalUser.getName()
+                        + "," + generalUser.getPhoneNumber() + "," + generalUser.getMailAddress() + "," + generalUser.getActivated()
+                        + "\n";
 
                 byte[] b = writeStr.getBytes();
 
@@ -62,36 +62,35 @@ public class UserFileUtil {
             try{
                 if(out != null) out.close();
             } catch(Exception e){
+                System.out.println(e.getMessage());
             }
         }
     }
 
 
     public static List<GeneralUser> readReader(Reader input) throws IOException{
-        try{
+        try (input) {
             BufferedReader in = new BufferedReader(input);
             String line;
-            List<GeneralUser> userList = new ArrayList<GeneralUser>();
+            List<GeneralUser> userList = new ArrayList<>();
 
-            while((line=in.readLine())!=null){
+            while ((line = in.readLine()) != null) {
                 String[] writeStr = line.split(",");
 
-                if(writeStr.length != 6)continue;
+                if (writeStr.length != 6) continue;
 
                 GeneralUser user = new GeneralUser();
 
                 user.setId(writeStr[0]);
                 user.setPasswd(writeStr[1]);
                 user.setName(writeStr[2]);
-                user.setPhone_number(writeStr[3]);
-                user.setMail_address(writeStr[4]);
+                user.setPhoneNumber(writeStr[3]);
+                user.setMailAddress(writeStr[4]);
                 user.setActivated(Integer.parseInt(writeStr[5]));
 
                 userList.add(user);
             }
             return userList;
-        }finally {
-            input.close();
         }
     }
 }
