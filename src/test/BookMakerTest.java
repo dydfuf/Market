@@ -22,4 +22,26 @@ class BookMakerTest {
         assertEquals("Fair",bm.checkBookCond("3"));
         assertEquals("Excellent",bm.checkBookCond(""));
     }
+
+    @Test
+    void checkISBN(){
+        BookMaker bm = new BookMaker();
+        assertTrue(bm.checkISBN("1234567890123"));
+        assertFalse(bm.checkISBN("12345678901234"));
+    }
+
+    @Test
+    void checkPublicationYear(){
+        BookMaker bm = new BookMaker();
+        assertTrue(bm.checkPublicationYear("1997"));
+        assertFalse(bm.checkPublicationYear("19970319"));
+    }
+
+    @Test
+    void checkPrice(){
+        BookMaker bm = new BookMaker();
+        assertTrue(bm.checkPrice("10000"));
+        assertTrue(bm.checkPrice("0"));
+        assertFalse(bm.checkPrice("오천원"));
+    }
 }

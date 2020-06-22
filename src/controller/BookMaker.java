@@ -29,12 +29,45 @@ public class BookMaker {
         book.setAuthor(scanner.nextLine());
         System.out.print("Publisher : ");
         book.setPublisher(scanner.nextLine());
-        System.out.print("Publication Year : ");
-        book.setPublication_year(scanner.nextLine());
-        System.out.print("ISBN : ");
-        book.setISBN(scanner.nextLine());
+        System.out.print("Publication Year(YYYY) : ");
+        String publicationYear = scanner.nextLine();
+        while(true){
+            if(checkPublicationYear(publicationYear)){
+                book.setPublication_year(publicationYear);
+                break;
+            }
+            else {
+                System.out.println("유효한 출간년도를 입력해 주세요");
+                System.out.print("Publication Year(YYYY) : ");
+                publicationYear = scanner.nextLine();
+            }
+        }
+        System.out.print("ISBN(13자리) : ");
+        String isbn = scanner.nextLine();
+        while(true){
+            if(checkISBN(isbn)){
+                book.setISBN(isbn);
+                break;
+            }
+            else {
+                System.out.println("유효한 ISBN을 입력해 주세요");
+                System.out.print("ISBN(13자리) : ");
+                isbn = scanner.nextLine();
+            }
+        }
         System.out.print("Price : ");
-        book.setPrice(scanner.nextLine());
+        String price = scanner.nextLine();
+        while(true){
+            if(checkPrice(price)){
+                book.setPrice(price);
+                break;
+            }
+            else {
+                System.out.println("가격은 숫자로 입력 해 주세요");
+                System.out.print("Price : ");
+                price = scanner.nextLine();
+            }
+        }
         System.out.print("Book Condition(1.Excellent 2.Good 3.Fair) : ");
         book.setBook_condition(checkBookCond(scanner.nextLine()));
         book.setSeller(username);
@@ -74,5 +107,20 @@ public class BookMaker {
             }
         }
         return bookCond;
+    }
+
+    public boolean checkPublicationYear(String PublicationYear){
+        if(PublicationYear.equals("")) return true;
+        return PublicationYear.matches("^(\\d{4})$");
+    }
+
+    public boolean checkISBN(String isbn){
+        if(isbn.equals("")) return true;
+        return isbn.matches("^(\\d{13})$");
+    }
+
+    public boolean checkPrice(String price){
+        if(price.equals("")) return true;
+        return price.matches("^(\\d+)$");
     }
 }
