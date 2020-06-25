@@ -57,7 +57,7 @@ public class BookControl {
         if(!seller.isEmpty()){
             System.out.println("----------Trade----------");
             System.out.println("Buyer's Email : " + um.getEmail(username));
-            System.out.println("Seller's Email : " + seller);
+            System.out.println("Seller's Email : " + um.getEmail(seller));
             System.out.println("E-mail sended to Seller !!");
             System.out.println("-------------------------");
         }

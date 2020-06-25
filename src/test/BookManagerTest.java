@@ -4,6 +4,7 @@ import controller.BookManager;
 import controller.UserManager;
 import model.Book;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,13 +14,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BookManagerTest {
 
+    private List<Book> BookList;
+    private BookManager bm;
+    private Book book;
+
+    @BeforeEach
+    void setup(){
+        this.BookList = new ArrayList<>();
+        this.bm = new BookManager();
+        this.book = new Book();
+        bm.setBookList(BookList);
+    }
+
     @Test
     void addBook() {
-        List<Book> BookList = new ArrayList<>();
-        BookManager bm = new BookManager();
-        Book book = new Book();
-        bm.setBookList(BookList);
-
         bm.addBook(book);
         assertEquals(1,BookList.size());
 
@@ -29,11 +37,6 @@ class BookManagerTest {
 
     @Test
     void removeBook() {
-        List<Book> BookList = new ArrayList<>();
-        BookManager bm = new BookManager();
-        Book book = new Book();
-
-        bm.setBookList(BookList);
 
         book.setTitle("TestTitle");
         book.setSeller("TestUser");
@@ -53,11 +56,6 @@ class BookManagerTest {
 
     @Test
     void updateBookInfo() {
-        List<Book> BookList = new ArrayList<>();
-        BookManager bm = new BookManager();
-        Book book = new Book();
-
-        bm.setBookList(BookList);
 
         book.setTitle("TestTitle");
         book.setSeller("TestUser");
@@ -71,11 +69,6 @@ class BookManagerTest {
 
     @Test
     void searchBook() {
-        List<Book> BookList = new ArrayList<>();
-        BookManager bm = new BookManager();
-        Book book = new Book();
-
-        bm.setBookList(BookList);
 
         book.setTitle("TestTitle");
         book.setAuthor("TestAuthor");
@@ -101,11 +94,6 @@ class BookManagerTest {
 
     @Test
     void removeBookById() {
-        List<Book> BookList = new ArrayList<>();
-        BookManager bm = new BookManager();
-        Book book = new Book();
-
-        bm.setBookList(BookList);
 
         book.setTitle("TestTitle");
         book.setAuthor("TestAuthor");

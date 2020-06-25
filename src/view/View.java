@@ -223,27 +223,28 @@ public class View {
     }
 
     public void UpdateMyBook(String username) throws IOException {
-        System.out.println("내 책 정보 수정");
+        System.out.println("내 책 정보를 수정 하시겠습니까?");
         boolean power = true;
         BookControl bc = new BookControl();
         while(power){
             scanner.reset();
             System.out.println("1.수정 2.삭제 3.이전으로");
-            int id;
+            String id;
             String menuNum = scanner.nextLine();
             switch (menuNum){
                 case "1":
                     //update book
                     scanner.reset();
                     System.out.print("수정할 책의 Identify Number를 입력해 주세요 : ");
-                    id = scanner.nextInt();
-                    bc.UpdateBook(username, id);
+                    id = scanner.nextLine();
+
+                    bc.UpdateBook(username, Integer.parseInt(id));
                     break;
                 case "2":
                     scanner.reset();
                     System.out.print("삭제할 책의 Identify Number를 입력해 주세요 : ");
-                    id = scanner.nextInt();
-                    bc.RemoveBook(username, id);
+                    id = scanner.nextLine();
+                    bc.RemoveBook(username, Integer.parseInt(id));
                     //delete book
                     break;
                 case "3":
@@ -260,7 +261,7 @@ public class View {
     public void TradeBookView() throws IOException {
         System.out.println("등록된 책 중 구매하실 책이 있습니까?");
         boolean power = true;
-        int id;
+        String id;
         BookControl bc = new BookControl();
         while(power){
             scanner.reset();
@@ -271,8 +272,8 @@ public class View {
                     scanner.reset();
                     //update book
                     System.out.print("구매하실 책의 Identify Number를 입력해 주세요 : ");
-                    id = scanner.nextInt();
-                    bc.TradeBook(LoginUserName, id);
+                    id = scanner.nextLine();
+                    bc.TradeBook(LoginUserName, Integer.parseInt(id));
                     power = false;
                     break;
                 case "2":
@@ -290,7 +291,7 @@ public class View {
     public void RemoveBookView() throws IOException {
         System.out.println("검색된 책 중 삭제할 책이 있습니까?");
         boolean power = true;
-        int id;
+        String id;
         BookControl bc = new BookControl();
         while(power){
             scanner.reset();
@@ -301,8 +302,8 @@ public class View {
                     scanner.reset();
                     //update book
                     System.out.print("삭제 할 책의 Identify Number를 입력해 주세요 : ");
-                    id = scanner.nextInt();
-                    bc.RemoveBook("admin", id);
+                    id = scanner.nextLine();
+                    bc.RemoveBook("admin", Integer.parseInt(id));
                     power = false;
                     break;
                 case "2":
@@ -332,7 +333,7 @@ public class View {
                     scanner.reset();
                     //update book
                     System.out.print("삭제 할 유저의 Id를 입력해 주세요 : ");
-                    id = scanner.next();
+                    id = scanner.nextLine();
                     uc.RemoveUser(id);
                     power = false;
                     break;
@@ -340,10 +341,10 @@ public class View {
                     scanner.reset();
                     //update book
                     System.out.print("활성/비활성화 할 유저의 Id를 입력해 주세요 : ");
-                    id = scanner.next();
+                    id = scanner.nextLine();
                     System.out.println("활성화 : 0, 비활성화 : 1");
-                    int active = scanner.nextInt();
-                    uc.ActivateUser(id, active);
+                    String active = scanner.nextLine();
+                    uc.ActivateUser(id, Integer.parseInt(active));
                     power = false;
                     break;
                 case "3":

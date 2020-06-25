@@ -1,7 +1,9 @@
 package test;
 
+import controller.UserMaker;
 import controller.UserManager;
 import model.GeneralUser;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,12 +13,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserManagerTest {
 
+    private List<GeneralUser> UserList;
+    private UserManager um;
+    private GeneralUser user;
+
+    @BeforeEach
+    void setup(){
+        this.UserList = new ArrayList<>();
+        this.um = new UserManager();
+        this.user = new GeneralUser();
+        um.setUserList(UserList);
+    }
+
     @Test
     void addUser() {
-        List<GeneralUser> UserList = new ArrayList<>();
-        UserManager um = new UserManager();
-        GeneralUser user = new GeneralUser();
-        um.setUserList(UserList);
+
         user.setId("Test");
 
         assertEquals(0, um.addUser(user));
@@ -26,10 +37,6 @@ class UserManagerTest {
 
     @Test
     void removeUser() {
-        List<GeneralUser> UserList = new ArrayList<>();
-        UserManager um = new UserManager();
-        GeneralUser user = new GeneralUser();
-        um.setUserList(UserList);
         user.setId("Test");
 
         assertEquals(0, um.addUser(user));
@@ -41,10 +48,6 @@ class UserManagerTest {
 
     @Test
     void compareToLogin() {
-        List<GeneralUser> UserList = new ArrayList<>();
-        UserManager um = new UserManager();
-        GeneralUser user = new GeneralUser();
-        um.setUserList(UserList);
 
         user.setId("TestId");
         user.setPasswd("TestPassword");
@@ -59,10 +62,6 @@ class UserManagerTest {
 
     @Test
     void getEmail() {
-        List<GeneralUser> UserList = new ArrayList<>();
-        UserManager um = new UserManager();
-        GeneralUser user = new GeneralUser();
-        um.setUserList(UserList);
 
         user.setId("TestId");
         user.setPasswd("TestPassword");

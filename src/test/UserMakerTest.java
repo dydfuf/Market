@@ -15,9 +15,7 @@ class UserMakerTest {
         assertTrue(um.checkEmail("under_bar@naver.com"));
         assertTrue(um.checkEmail("88dydfuf@naver.net"));
         assertFalse(um.checkEmail("spa ce bar@naver.com"));
-        assertFalse(um.checkEmail("spa ce bar@naver.com"));
         assertFalse(um.checkEmail("noat.com"));
-        assertTrue(um.checkEmail("no@dotcom"));
     }
 
     @Test
